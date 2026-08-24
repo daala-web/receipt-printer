@@ -14,20 +14,28 @@
       width: 72mm;
       margin: 0 auto;
       padding: 10px 0;
-      font-size: 15px; /* Bumped base font size */
+      font-size: 15px;
       color: #000;
     }
     .text-center { text-align: center; }
     .divider { border-bottom: 2px dashed #000; margin: 12px 0; }
     .field { margin: 10px 0; }
-    .label { font-weight: bold; font-size: 13px; text-transform: uppercase; } /* Larger, bolder label */
-    .value { font-size: 17px; font-weight: bold; margin-top: 3px; } /* Larger, bold field values */
+    .label { font-weight: bold; font-size: 13px; text-transform: uppercase; }
+    .value { 
+      font-size: 17px; 
+      font-weight: bold; 
+      margin-top: 3px; 
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      white-space: pre-wrap;
+    }
   </style>
 </head>
 <body>
 
   <div class="text-center">
-    <h2 style="margin: 0; font-size: 22px;">RAYBURN MS TARDY SLIP</h2>
+    <div style="font-size: 20px; font-weight: bold;">RAYBURN MS</div>
+    <div style="font-size: 16px; font-weight: bold; margin-top: 2px;">TARDY SLIP</div>
   </div>
 
   <div class="divider"></div>
