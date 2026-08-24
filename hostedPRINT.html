@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Receipt</title>
+  <style>
+    /* Sets page width for standard 80mm thermal paper */
+    @page {
+      size: 80mm auto;
+      margin: 0;
+    }
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      width: 72mm; /* Leave margin for printer feeds */
+      margin: 0 auto;
+      padding: 10px 0;
+      font-size: 12px;
+      color: #000;
+    }
+    .text-center { text-align: center; }
+    .text-right { text-align: right; }
+    .divider { border-bottom: 1px dashed #000; margin: 8px 0; }
+    .row { display: flex; justify-content: space-between; margin: 4px 0; }
+    .bold { font-weight: bold; }
+    /* Hide non-receipt elements if opened in standard browser */
+    @media print {
+      .no-print { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="text-center">
+    <h2 style="margin: 0;" id="store-name">MY STORE</h2>
+    <p style="margin: 4px 0;" id="receipt-date"></p>
+    <p style="margin: 2px 0;">Order #: <span id="order-id"></span></p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="row bold">
+    <span>ITEM</span>
+    <span>QTY</span>
+    <span>PRICE</span>
+  </div>
+  <div class="divider"></div>
+
+  <!-- Item Row -->
+  <div class="row">
+    <span id="item-name">--</span>
+    <span id="item-qty">1</span>
+    <span id="item-price">$0.00</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="row bold" style="font-size: 14px;">
+    <span>TOTAL:</span>
+    <span id="total-amount">$0.00</span>
+  </div>
+
+  <div class="divider"></div>
+  <p class="text-center">Thank you for your business!</p>
+
+  <script>
+    // Read parameters from AppSheet URL
+    const params = new URLSearchParams(window.location.search);
+    
+    document.getElementById('order-id').innerText = params.get('id') || 'N/A';
+    document.getElementById('item-name').innerText = params.get('item') || 'Item';
+    document.getElementById('item-qty').innerText = params.get('qty') || '1';
+    document.getElementById('item-price').innerText = params.get('price') ? '$' + params.get('price') : '$0.00';
+    document.getElementById('total-amount').innerText = params.get('total') ? '$' + params.get('total') : '$0.00';
+    
+    // Set current date/time
+    document.getElementById('receipt-date').innerText = new Date().toLocaleString();
+
+    // Automatically trigger browser print dialog on load
+    window.onload = function() {
+      setTimeout(() => {
+        window.print();
+      }, 500);
+    };
+  </script>
+</body>
+</html>
