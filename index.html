@@ -71,16 +71,22 @@
     document.getElementById('teacher').innerText = params.get('teacher') || 'N/A';
     document.getElementById('room').innerText = params.get('room') || 'N/A';
 
+    function closeWindow() {
+      // 200ms delay ensures print spooling finishes before tab closes
+      setTimeout(() => {
+        window.close();
+      }, 200);
+    }
+
     window.onload = function() {
       setTimeout(() => {
         window.print();
       }, 500);
     };
 
-    // Automatically close the browser tab once print dialog is completed or canceled
-    window.onafterprint = function() {
-      window.close();
-    };
+    // Triggers auto-close whether user clicks Print or Cancel
+    window.onafterprint = closeWindow;
+    window.addEventListener('afterprint', closeWindow);
   </script>
 </body>
 </html>
