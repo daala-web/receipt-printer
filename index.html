@@ -14,20 +14,20 @@
       width: 72mm;
       margin: 0 auto;
       padding: 10px 0;
-      font-size: 13px;
+      font-size: 15px; /* Bumped base font size */
       color: #000;
     }
     .text-center { text-align: center; }
-    .divider { border-bottom: 1px dashed #000; margin: 10px 0; }
-    .field { margin: 8px 0; }
-    .label { font-weight: bold; font-size: 11px; text-transform: uppercase; }
-    .value { font-size: 14px; margin-top: 2px; }
+    .divider { border-bottom: 2px dashed #000; margin: 12px 0; }
+    .field { margin: 10px 0; }
+    .label { font-weight: bold; font-size: 13px; text-transform: uppercase; } /* Larger, bolder label */
+    .value { font-size: 17px; font-weight: bold; margin-top: 3px; } /* Larger, bold field values */
   </style>
 </head>
 <body>
 
   <div class="text-center">
-    <h2 style="margin: 0; font-size: 18px;">RAYBURN MS TARDY SLIP</h2>
+    <h2 style="margin: 0; font-size: 22px;">RAYBURN MS TARDY SLIP</h2>
   </div>
 
   <div class="divider"></div>
@@ -53,7 +53,7 @@
   </div>
 
   <div class="divider"></div>
-  <p class="text-center" style="font-size: 11px;">Please admit student to class.</p>
+  <p class="text-center" style="font-size: 13px; font-weight: bold;">Please admit student to class.</p>
 
   <script>
     const params = new URLSearchParams(window.location.search);
