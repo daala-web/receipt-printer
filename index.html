@@ -76,6 +76,11 @@
         window.print();
       }, 500);
     };
+
+    // Automatically close the browser tab once print dialog is completed or canceled
+    window.onafterprint = function() {
+      window.close();
+    };
   </script>
 </body>
 </html>
